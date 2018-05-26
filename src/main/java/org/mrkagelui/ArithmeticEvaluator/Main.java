@@ -13,7 +13,8 @@ public class Main {
                 break;
             }
             try {
-                parser = new SimpleParser(line);
+                String tidied = line.replaceAll("\\s", "");
+                parser = new SimpleParser(tidied);
                 Node n = parser.parse();
                 System.out.println("=" + n.evaluate());
             } catch (MalformedEquationException e) {

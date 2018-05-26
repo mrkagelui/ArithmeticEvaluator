@@ -5,5 +5,5 @@ public abstract class Parser {
     public Parser(String s) {
         input = s;
     }
-    abstract Node parse() throws MalformedEquationException;
+    abstract Node parse();
 }
