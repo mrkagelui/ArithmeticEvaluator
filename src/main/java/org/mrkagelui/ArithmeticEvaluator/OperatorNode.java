@@ -1,3 +1,4 @@
+package org.mrkagelui.ArithmeticEvaluator;
 enum Operator {
     PLUS,
     MINUS,
@@ -10,15 +11,27 @@ public class OperatorNode extends Node implements Comparable<Node>{
     private Node left;
     private Node right;
 
-    public OperatorNode(Operator o, Node n) {
+    public OperatorNode(Operator o) {
         this.operator = o;
-        this.left = n;
     }
 
-    public OperatorNode(Operator operator, Node left, Node right) {
-        this.operator = operator;
-        this.left = left;
-        this.right = right;
+    public OperatorNode(Operator o, Node... nodes) {
+        this.operator = o;
+        this.left = nodes[0];
+        if (nodes.length > 1) {
+            this.right = nodes[1];
+        }
+    }
+
+    public void pushOperand(Node n) {
+        if (left == null) {
+            left = n;
+            return;
+        }
+        if (right == null) {
+            right = n;
+            return;
+        }
     }
 
     public Operator getOperator() {
